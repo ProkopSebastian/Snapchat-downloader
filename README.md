@@ -1,37 +1,52 @@
-# Snapchat Memories Downloader Pro 👻
+Snapchat Memories Downloader
+A Python-based utility to automate the downloading of your Snapchat memories using the data export provided by Snapchat. This tool processes the memories_history.html file, handles media downloads, and restores original metadata.
 
-A multithreaded, automated tool to download all your Snapchat memories from the exported `memories_history.html` file. 
+Key Features
+Parallel Downloading: Uses multiple threads to handle the download queue more efficiently than a single-threaded approach.
 
-Unlike basic scripts, this tool automatically merges video overlays (using FFmpeg) and restores the original EXIF metadata (creation date, time, and GPS location) using ExifTool, so your photos and videos appear perfectly organized in your gallery.
+Overlay Processing: Automatically detects and merges Snapchat filters/overlays into your photos and videos using FFmpeg.
 
-## Features
-- **Multithreaded Downloading:** Extremely fast downloads using multiple concurrent connections.
-- **Auto-Overlay Merge:** Automatically detects `.zip` files containing Snapchat filters/overlays and merges them into the main photo/video.
-- **EXIF Metadata Restoration:** Fixes file creation dates (with automatic +2h timezone offset) and restores GPS coordinates directly into the file's metadata.
-- **Smart Resume:** Skips already downloaded files and automatically retries failed downloads.
-- **GUI File Picker:** No need to hardcode paths; simply select your `memories_history.html` file via a native window.
+Metadata Restoration: Writes the original capture date and GPS coordinates directly into the files (EXIF) using ExifTool.
 
----
+Timezone Offset: Automatically applies a +2h offset to match local time during the metadata write process.
 
-## 🚀 How to use (For non-technical users)
+Simple GUI: Includes a file picker to easily select your Snapchat HTML export without editing the code.
 
-You do **not** need to install Python. 
+🚀 How to use (Pre-compiled version)
+If you are using the .exe version from the Releases tab:
 
-1. Ensure you are logged into Snapchat on your **Google Chrome** browser (the script uses Chrome cookies to authenticate downloads).
-2. Request your data from Snapchat and extract the `.zip` they email you.
-3. Go to the [Releases page](../../releases) *(replace this with your actual releases link)* and download the latest `Snapchat-Downloader.zip`.
-4. Extract the downloaded folder on your PC.
-5. Double-click `snapchat-downloader.exe`.
-6. When prompted, select your `memories_history.html` file (located in the `html` folder of your Snapchat data export).
-7. Wait for the process to finish. Your memories will be saved in a new folder named `Pobrane_Wspomnienia`.
+Log in to Snapchat in your Google Chrome browser (required for authentication cookies).
 
----
+Request and download your data from Snapchat, then extract the ZIP archive.
 
-## 💻 How to run from source (For developers)
+Place snapchat-downloader.exe, exiftool.exe, ffmpeg.exe, and ffprobe.exe in the same folder.
 
-If you prefer to run the Python script directly:
+Run the downloader and select your memories_history.html file.
 
-1. Clone this repository:
-   ```bash
-   git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
-   cd YOUR_REPO_NAME
+Wait for the process to complete. Your files will be saved in a new folder named Memories_YYYYMMDD.
+
+💻 How to run from source
+Clone the repository:
+
+Bash
+git clone https://github.com/ProkopSebastian/Snapchat-downloader.git
+cd Snapchat-downloader
+Install requirements:
+
+Bash
+pip install -r requirements.txt
+Dependencies: Ensure exiftool.exe, ffmpeg.exe, and ffprobe.exe are present in the root directory.
+
+Run the script:
+
+Bash
+python snapchat-downloader.py
+Requirements
+Python 3.10+
+
+Google Chrome (for session cookies)
+
+External Binaries: ExifTool and FFmpeg
+
+Legal Disclaimer
+This tool is for personal use only. Use it responsibly and in accordance with Snapchat's Terms of Service. The authors are not responsible for any account restrictions or data loss.
