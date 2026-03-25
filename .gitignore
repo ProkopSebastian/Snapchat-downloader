@@ -1,0 +1,22 @@
+# Środowiska wirtualne
+venv/
+env/
+
+# Pliki generowane przez PyInstaller
+build/
+dist/
+*.spec
+
+# Zewnętrzne programy i pliki binarne (to wrzucamy do Releases, nie tutaj)
+*.exe
+exiftool_files/
+
+# Pobrane dane i pliki prywatne
+Pobrane_Wspomnienia/
+*.html
+*.zip
+temp_*/
+
+# Cache Pythona
+__pycache__/
+*.pyc
